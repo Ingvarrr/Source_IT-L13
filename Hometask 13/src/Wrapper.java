@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -39,12 +38,33 @@ public class Wrapper<T extends Object>  {
         this.size--;
     }
     //преобразование массива объектов в массив чисел для дальнейшей работы с элементами
-    public Integer[] toIntArray() {
+
+    //старый метод
+    /*public Integer[] toIntArray() {
+        e -> Arrays.copyOf(this.array, this.size, Integer[].class)
         return Arrays.copyOf(this.array, this.size, Integer[].class);
+    }*/
+
+    //новый метод
+    public Integer[] toIntArray(){
+        Integer[] intArr = new Integer[0];
+        try {
+            intArr = Arrays.stream(this.array).map(Object::toString).map(Integer::parseInt).toArray(Integer[]::new);
+        }catch (NumberFormatException e){
+            System.out.println("Sorry, that was Array of Strings, so you have to use toStringArray() method");
+        }
+        return intArr;
     }
     //преобразование массива объектов в массив строк для дальнейшей работы с элементами
-    public String[] toStringArray() {
+
+    //старый метод
+    /*public String[] toStringArray() {
         return Arrays.copyOf(this.array, this.size, String[].class);
+    }*/
+
+    //новый метод
+    public String[] toStringArray(){
+        return Arrays.stream(this.array).map(Object::toString).toArray(String[]::new);
     }
     //вывод массива в консоль
     public void printArray() {

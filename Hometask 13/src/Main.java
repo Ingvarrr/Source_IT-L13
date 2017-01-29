@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.function.Function;
 
 /**
  * Created by vig on 12/16/16.
@@ -19,6 +20,7 @@ public class Main {
         array1.remove(1);
         //выводим массив с удаленным элементом
         array1.printArray();
+        array1.toStringArray();
         //распечатка в консоль avg,min,max методов класса Base, применимых к обертке массива Integer array1
         System.out.println(calc.avg(array1.toIntArray()));
         System.out.println(calc.min(array1.toIntArray()));
@@ -32,6 +34,8 @@ public class Main {
         array2.add("1abc");
         array2.remove(2);
         array2.printArray();
+        //проверка работы метода toIntArray() на массиве строк
+        array2.toIntArray();
         System.out.println(array2.toStringArray().getClass());
     }
 }
